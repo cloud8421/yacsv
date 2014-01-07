@@ -1,7 +1,23 @@
 defmodule Yacsv do
+  @moduledoc "Parses a csv string and returns a list of words"
 
   defrecord State, current_word: [], all_words: [], quoted: false
 
+  @doc """
+  Parses a binary string and returns a list with included words.
+  iex> Yacsv.parse("OSI, Office of Strategic Influence, 2003")
+  ["OSI", "Office of Strategic Influence", "2003"]
+
+  It supports two optional parameters:
+
+  - separator (char)
+  iex> Yacsv.parse("OSI-Office of Strategic Influence-2003", '-')
+  ["OSI", "Office of Strategic Influence", "2003"]
+
+  - quote_char (char)
+  Yacsv.parse("OSI, Office of Strategic Influence, 'Hello, Helicopter!', 2003", ',', '\'')
+  ["OSI", "Office of Strategic Influence", "Hello, Helicopter!", "2004"]
+  """
   def parse(string, separator // ',', kuote // '"') do
     [ separator_char ] = separator
     [ quote_char ] = kuote
