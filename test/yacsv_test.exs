@@ -11,4 +11,13 @@ defmodule YacsvTest do
     assert data == ["some", "values", "in a csv file"]
   end
 
+  test "supports quoted values" do
+    data = Yacsv.parse("Muse, Absolution, \"Plugin, Baby\", 2004")
+    assert data == ["Muse", "Absolution", "Plugin, Baby", "2004"]
+  end
+
+  test "can customize the quote char" do
+    data = Yacsv.parse("Muse, Absolution, 'Plugin, Baby', 2004", ',', '\'')
+    assert data == ["Muse", "Absolution", "Plugin, Baby", "2004"]
+  end
 end
