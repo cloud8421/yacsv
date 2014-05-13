@@ -18,7 +18,7 @@ defmodule Yacsv do
   Yacsv.parse("OSI, Office of Strategic Influence, 'Hello, Helicopter!', 2003", ',', '\'')
   ["OSI", "Office of Strategic Influence", "Hello, Helicopter!", "2004"]
   """
-  def parse(string, separator // ',', kuote // '"') do
+  def parse(string, separator \\ ',', kuote \\ '"') do
     [ separator_char ] = separator
     [ quote_char ] = kuote
     parse(string |> bitstring_to_list, separator_char, quote_char, State.new)
