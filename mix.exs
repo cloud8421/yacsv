@@ -4,7 +4,7 @@ defmodule Yacsv.Mixfile do
   def project do
     [ app: :yacsv,
       version: "0.0.1",
-      elixir: "~> 0.13.2",
+      elixir: "~> 0.14.3",
       deps: deps ]
   end
 
